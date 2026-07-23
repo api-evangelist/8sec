@@ -1,0 +1,15 @@
+generated: '2026-07-17'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: 8sec.games
+  https: true
+  tls_cert_error: '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch,
+    certificate is not valid for ''8sec.games'''
+  hsts: null
+domains:
+- domain: 8sec.games
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false
