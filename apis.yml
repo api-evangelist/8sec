@@ -12,15 +12,21 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/8sec.png
 name: 8sec
-description: 8SEC is a hybrid-casual and hyper-casual mobile game studio based in Lyon,
-  France, founded in 2015 by serial entrepreneur and investor Jeremie Berrebi. The
-  studio rapidly prototypes and ships engaging free-to-play mobile games for iOS and
-  Android, with titles such as Jump Race!, Turbo Taxi, Trivia.io, Untie!, and Human
-  Puzzle that have collectively driven over 50 million downloads. 8SEC positions itself
-  as a full-stack studio spanning game design, development, and publishing. It is a
-  portfolio company of 500 Global, surfaced into the API Evangelist network via VC
-  portfolio mapping. The company operates as a game producer and does not currently
-  publish a public developer API, SDK, or documentation surface.
+description: 8SEC was a hybrid-casual and hyper-casual mobile game studio based in Lyon,
+  France, founded in 2015 and later opening a second office in Paris. Over a ten-year
+  run it published more than 90 free-to-play mobile games for iOS and Android — Jump
+  Race!, Turbo Taxi, Trivia.io, Untie! and Human Puzzle among them — collectively
+  driving roughly 50 million downloads, and positioned itself as a full-stack studio
+  spanning game design, development and publishing. UK publisher Kwalee invested EUR 1.5
+  million in January 2024 and took over publishing duties across the entire 8SEC
+  catalogue. THE STUDIO IS NOW CLOSED — the shutdown was reported in October 2025, with
+  all seven staff, including cofounders Louis Croquet and Louis Giraud, seeking new roles.
+  The company's own site at 8sec.games is no longer deployed — the domain resolves to
+  OVHcloud shared hosting serving a "Site not installed" 404 behind a certificate that
+  does not cover the hostname — and the Teamtailor careers page returns 404. 8SEC was
+  surfaced into the API Evangelist network as a 500 Global portfolio lead; it never
+  published a public developer API, SDK, machine-readable specification or documentation
+  surface, and it no longer exists to publish one.
 url: https://raw.githubusercontent.com/api-evangelist/8sec/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -30,13 +36,15 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-08-17'
 tags:
 - Company
 - Games
 - Mobile Games
 - Game Studio
 - Hyper-Casual
+- Hybrid-Casual
+- Free-to-Play
 - Gaming
 - France
 apis: []
@@ -52,12 +60,36 @@ common:
   url: https://www.linkedin.com/company/8sec
 - type: Twitter
   url: https://x.com/8sec_games
-- type: Careers
-  url: https://8sec.teamtailor.com/
 - type: DomainSecurity
   url: security/8sec-domain-security.yml
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-17'
+  status: minimal
+  artifacts_added: 1
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    Careers pointer (https://8sec.teamtailor.com/) removed — it returns HTTP 404 now the
+    studio has closed. The /.well-known/ + contract-discovery probe is recorded at
+    well-known/8sec-well-known.yml with NO WellKnown or SecurityTxt pointer, because every
+    path 404d.
+x-coverage:
+  state: none
+  reason: defunct
+  detail: >-
+    8SEC closed in October 2025 after ten years and roughly 90 mobile games, and its own
+    site is gone with it — 8sec.games now resolves to an OVHcloud "Site not installed" 404
+    behind a certificate issued to cluster103.hosting.ovh.net, so a verifying client cannot
+    even complete the TLS handshake; only a leftover Netlify deploy of the marketing site
+    still serves 8SEC content, and it answers every path with the same HTML homepage.
+  evidence:
+  - url: https://8sec.games/
+    status: 404
+  - url: https://8sec.games/.well-known/security.txt
+    status: 404
+  - url: https://8sec.games/openapi.json
+    status: 404
+  - url: https://8sec.teamtailor.com/
+    status: 404
+  - url: https://mobilegamer.biz/french-hybridcasual-studio-8sec-is-closing/
+    status: 200
+  checked: '2026-08-17'

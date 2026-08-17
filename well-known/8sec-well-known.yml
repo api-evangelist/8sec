@@ -1,0 +1,75 @@
+generated: '2026-08-17'
+method: probed
+source: live HTTPS probes of the only host named in apis.yml (8sec.games)
+note: >-
+  RECORDED ABSENCE, NOT A PRESENCE. Every /.well-known/ path probed returned HTTP 404
+  from an OVHcloud "Site not installed" holding page, so NO WellKnown / SecurityTxt
+  pointer is wired into apis.yml. 8SEC closed in October 2025 and the studio site is no
+  longer deployed: 8sec.games resolves to OVH shared hosting (213.186.33.4,
+  cluster103.hosting.ovh.net) whose certificate does not cover the hostname, so a
+  verifying client cannot complete the TLS handshake at all. The paths below were probed
+  with certificate verification disabled purely to obtain a real status code.
+hosts:
+- host: 8sec.games
+  https: false
+  tls_error: >-
+    subjectAltName does not match host name 8sec.games (certificate CN is
+    cluster103.hosting.ovh.net)
+  server_note: OVHcloud "Site not installed" holding page answers every path with 404
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /.well-known/agent-card.json
+  status: 404
+- path: /.well-known/agent.json
+  status: 404
+contract_discovery:
+  note: >-
+    STEP 0b contract discovery ran against the only host this company names. There is no
+    baseURL and no OpenAPI servers[] host, because apis[] is empty — 8SEC never shipped a
+    public API.
+  probes:
+  - url: https://8sec.games/openapi.json
+    status: 404
+  - url: https://8sec.games/openapi.yaml
+    status: 404
+  - url: https://8sec.games/swagger.json
+    status: 404
+  - url: https://8sec.games/api-docs
+    status: 404
+  - url: https://8sec.games/llms.txt
+    status: 404
+  soft_200_rejected:
+  - url: https://8sec.netlify.app/
+    status: 200
+    reason: >-
+      A leftover Netlify deploy of the marketing site is still live and is the only place
+      8SEC's own content can still be read. It is a static catch-all: /llms.txt,
+      /robots.txt, /openapi.json and every /.well-known/* path all return the SAME 70,975
+      byte HTML homepage with content-type text/html. These are soft-200 HTML shells, not
+      documents, so none of them is recorded as a hit. The host is also not a domain 8SEC
+      owns, so it is not wired as a Website pointer.
+  wayback:
+    note: >-
+      Wayback CDX for 8sec.games* returns no API, docs, SDK, GraphQL, Swagger or OpenAPI
+      path in its history. The only "developer" URL ever archived is
+      https://www.8sec.games/game-developer/ — a job posting for a game-developer role,
+      not an API surface.
+  packages:
+    note: >-
+      npm registry search for "8sec" returns no first-party package; pypi.org/pypi/8sec/json
+      returns 404. No SDK, CLI or client library exists to catalogue.
+  github:
+    note: >-
+      github.com/8SEC-Games exists as an Organization (created 2024-02-01, matching the
+      Kwalee investment window) but publishes 0 public repositories and carries no blog,
+      description or location that ties it to this company. Ownership is unverifiable, so
+      no GitHubOrganization pointer is wired.
