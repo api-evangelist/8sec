@@ -38,6 +38,7 @@ description: 8SEC was a hybrid-casual and hyper-casual mobile game studio based 
   surfaced into the API Evangelist network as a 500 Global portfolio lead; it never
   published a public developer API, SDK, machine-readable specification or documentation
   surface, and it no longer exists to publish one.
+x-status: defunct
 url: https://raw.githubusercontent.com/api-evangelist/8sec/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -58,6 +59,7 @@ tags:
 - Free-to-Play
 - Gaming
 - France
+- Defunct
 apis: []
 maintainers:
 - FN: Kin Lane
